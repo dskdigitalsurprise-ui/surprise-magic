@@ -1,116 +1,112 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <script>
-        /* ==========================================
-           CORE SETTINGS (YAHAN CHANGE KAREIN)
-           ========================================== */
-        
-        const CUSTOMER_DIALOGUE = "Apne partner ke liye apne dil ki koi bhi baat ya friends ke liye koi bhi apna dialogue rakhwa sakte hain!";
-        const MY_WHATSAPP_NUMBER = "916263619677";
-        const MY_GOOGLE_SITE = "https://sites.google.com/view/dsk-digital-birthday-surprise/home";
-        
-        // Digital Menu ke liye link (Aap yahan apni dusri Google site ya Catalog link daal sakte hain)
-        const DIGITAL_MENU_LINK = "https://wa.me/916263619677?text=Hello%20Danish%20bhai%2C%20mujhe%20Digital%20Menu%20Service%20ki%20details%20chahiye.";
-
-        /* ========================================== */
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSK Digital Surprise ADS</title>
+    <title>Digital Surprise - DSK Magic</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #000; color: #fff; text-align: center; padding: 15px; margin: 0; }
-        .container { max-width: 450px; margin: auto; border: 2px solid #ff3131; padding: 15px; border-radius: 25px; box-shadow: 0 0 25px rgba(255, 49, 49, 0.4); }
-        h1 { color: #ff3131; font-size: 22px; margin-bottom: 2px; text-transform: uppercase; }
-        .best-scanner { color: #ccc; font-size: 14px; margin-bottom: 20px; font-weight: bold; }
-        .name-entry-box { background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #444; }
-        input[type="text"] { width: 85%; padding: 12px; border-radius: 8px; border: none; font-size: 16px; text-align: center; margin-bottom: 15px; outline: none; }
-        .magic-btn { background: #ff3131; color: white; padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; }
-        .check-text { font-size: 12px; color: #7ef9ff; margin-top: 8px; display: block; }
-        .intro-banner { background: linear-gradient(45deg, #FFD700, #FFA500); color: #000; padding: 15px; border-radius: 12px; font-weight: bold; font-size: 14px; margin-bottom: 20px; display: block; line-height: 1.4; }
-        .btn { display: block; padding: 15px; margin: 10px 0; border-radius: 10px; text-decoration: none; font-weight: bold; color: #000; font-size: 15px; }
-        .btn-universal { background: linear-gradient(45deg, #FF007F, #FF4B2B); color: white; border: 1px solid #fff; } /* New Button Style */
-        .btn-1 { background-color: #58CCED; }
-        .btn-2 { background-color: #E2B6F3; }
-        .btn-3 { background-color: #79E5E1; }
-        .btn-4 { background-color: #FF80B5; }
-        .btn-5 { background-color: #FF8B3D; }
-        .btn-menu { background-color: #FFD700; border: 2px solid #fff; } /* Golden/Yellow for Menu */
-        .special-box { border: 2px dashed #ff007f; background: rgba(255, 0, 127, 0.05); padding: 15px; border-radius: 15px; margin: 20px 0; }
-        .special-link { background: #008080; color: white; padding: 12px; margin: 5px 0; border-radius: 5px; display: block; text-decoration: none; }
-        .btn-catalog { background: linear-gradient(45deg, #8E2DE2, #4A00E0); color: white; }
-        .wa-order { background-color: #25D366; color: white; }
-        .wa-share { background-color: #ffffff; color: #007bb5; border: 1px solid #ccc; font-size: 13px; }
-        .powered-by { background-color: #e0f7fa; color: #007bb5; padding: 12px; border-radius: 12px; font-weight: bold; margin-top: 25px; font-size: 13px; line-height: 1.5; }
+        body {
+            margin: 0; padding: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white; font-family: 'Arial', sans-serif;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 100vh; text-align: center; overflow-x: hidden;
+        }
+        .container { padding: 20px; width: 90%; max-width: 400px; }
+        .gift-box {
+            font-size: 80px; margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        h1 { font-size: 1.5rem; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        #message-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px; border-radius: 15px;
+            border: 1px solid #f1c40f; margin-top: 20px;
+            display: none; animation: fadeIn 1s;
+        }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        .branding { margin-top: 50px; font-size: 0.8rem; color: #bdc3c7; }
+        .order-btn {
+            display: inline-block; margin-top: 25px;
+            padding: 15px 25px; background: #e74c3c;
+            color: white; text-decoration: none;
+            border-radius: 50px; font-weight: bold;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>DSK SURPRISE ADS</h1>
-    <div class="best-scanner">🇮🇳 India Ka Sabse Best Scanner !</div>
-    
-    <div id="greeting-box" class="name-entry-box">
-        <h2 id="greet-text" style="color: #7ef9ff; font-size: 18px; margin-bottom: 10px;">Apna Naam Likhein</h2>
-        <div id="input-container">
-            <input type="text" id="userName" placeholder="Yahan Naam Likhein...">
-            <br>
-            <button class="magic-btn" onclick="runMagic()">MAGIC DEKHEIN</button>
-            <span class="check-text">Wapas Naam Chek kar sakte hain</span>
+    <div class="container">
+        <div class="gift-box">🎁</div>
+        <h1 id="status">Tap to Reveal Surprise</h1>
+        
+        <div id="message-box">
+            <p id="display-text"></p>
+        </div>
+
+        <a href="index.html" class="order-btn">Doston, Kya aap bhi aisa Jadu wala QR banwana chahte hain? <br> [CLICK HERE TO ORDER NOW]</a>
+
+        <div class="branding">
+            <p>DSK DIGITAL SURPRISE</p>
+            <p>POWERED BY DANISH KHAN</p>
+            <p style="font-size: 10px;">TM NO: 13512170 (CLASS: 42)</p>
         </div>
     </div>
 
-    <div id="dynamic-dialogue" class="intro-banner"></div>
+    <script>
+        // --- YE 2 LINE HAR CUSTOMER KE LIYE BADALNI HAIN ---
+        const CUSTOMER_NAME = "Rahul"; 
+        const CUSTOMER_DIALOGUE = "Happy Birthday Rahul! Aap hamesha khush raho aur aise hi muskurate raho.";
+        // ---------------------------------------------------
 
-    <a href="https://wa.me/916263619677?text=Hello%20Danish%20bhai%2C%20mujhe%20Universal%20Surprise%20Magic%20QR%20banwana%20hai" class="btn btn-universal">🌹 Universal Surprise Magic QR</a>
+        const statusText = document.getElementById('status');
+        const messageBox = document.getElementById('message-box');
+        const displayText = document.getElementById('display-text');
 
-    <a href="https://wa.me/916263619677" class="btn btn-1">Boy Aura Styli Focus T-Shirt</a>
-    <a href="https://wa.me/916263619677" class="btn btn-2">Couple Surprise T-Shirt</a>
-    <a href="https://wa.me/916263619677" class="btn btn-3">Birthday Surprise T-Shirt</a>
-    <a href="https://wa.me/916263619677" class="btn btn-4">Anniversary Surprise T-Shirt</a>
-    <a href="https://wa.me/916263619677" class="btn btn-5">Hotel & Event Staff Surprise T-Shirt</a>
-    
-    <a id="menu-btn" href="#" class="btn btn-menu">🍽️ DSK DIGITAL MENU SERVICE™</a>
+        document.body.onclick = () => {
+            if (statusText.innerText === "Tap to Reveal Surprise") {
+                startMagic();
+            }
+        };
 
-    <div class="special-box">
-        <h3 style="color:#ff007f; margin-bottom: 10px; font-size: 16px;">Special Digital Surprise ke liye niche click karein</h3>
-        <a id="slink1" href="#" class="special-link">🎂 Birthday Surprise</a>
-        <a id="slink2" href="#" class="special-link">💍 Anniversary Surprise</a>
-        <a id="slink3" href="#" class="special-link">💖 Couple Surprise</a>
-    </div>
+        function startMagic() {
+            statusText.innerText = "Listening to Magic...";
+            
+            // Step 1: Intro Voice
+            const introMsg = new SpeechSynthesisUtterance(`Hi, kaise hain aap? ${CUSTOMER_NAME} ne aapke liye ek magic surprise bheja hai. Suniye...`);
+            introMsg.lang = 'hi-IN';
+            introMsg.rate = 0.9;
 
-    <a id="catalog-btn" href="#" class="btn btn-catalog">📑 FULL DETAILS CATALOG PLAN RATE</a>
-    <a id="order-btn" href="#" class="btn wa-order">📲 ORDER KARNE KE LIYE MSG KAREIN</a>
-    <a id="share-btn" href="#" class="btn wa-share">Apne friends Group's family main share karein. 🥳🌹😊</a>
+            window.speechSynthesis.speak(introMsg);
 
-    <div class="powered-by">
-        🎁 DSK DIGITAL SURPRISE POWERED BY DANISH KHAN<br>
-        TM NO: 13512170 (CLASS: 42) 🧔‍♂️
-    </div>
-</div>
-
-<script>
-    document.getElementById('dynamic-dialogue').innerText = CUSTOMER_DIALOGUE;
-    document.getElementById('menu-btn').href = DIGITAL_MENU_LINK;
-    document.getElementById('slink1').href = MY_GOOGLE_SITE;
-    document.getElementById('slink2').href = MY_GOOGLE_SITE;
-    document.getElementById('slink3').href = MY_GOOGLE_SITE;
-    
-    const waBase = `https://wa.me/${MY_WHATSAPP_NUMBER}`;
-    document.getElementById('catalog-btn').href = waBase + "?text=" + encodeURIComponent("Hello Danish bhai, mujhe aapka Surprise Catalog, Plan aur Rates dekhne hain.");
-    document.getElementById('order-btn').href = waBase + "?text=" + encodeURIComponent("Hello Danish bhai, maine aapka QR Scan kiya mujhe bhi aisi T-shirt & Digital Surprise banwani hai.");
-    document.getElementById('share-btn').href = "whatsapp://send?text=" + encodeURIComponent("Bhai ye dekh kitni cool T-shirt hai! Check kar: https://aura-smart-key.netlify.app/");
-
-    function runMagic() {
-        var name = document.getElementById('userName').value;
-        if(name == "") { alert("Bhai, pehle naam toh likho!"); return; }
-        var msg = new SpeechSynthesisUtterance("Hi " + name + " kese hain aap humara digital surprise page dekhne ke liye shukriya.. Aapka Din Accha ho..");
-        msg.lang = 'hi-IN';
-        window.speechSynthesis.speak(msg);
-        document.getElementById('greet-text').innerText = "Hi " + name + " !";
-        document.getElementById('input-container').style.display = 'none';
-    }
-</script>
+            // Step 2: Main Dialogue (Starts after intro)
+            introMsg.onend = () => {
+                messageBox.style.display = "block";
+                displayText.innerText = CUSTOMER_DIALOGUE;
+                
+                const mainMsg = new SpeechSynthesisUtterance(CUSTOMER_DIALOGUE);
+                mainMsg.lang = 'hi-IN';
+                mainMsg.rate = 0.9;
+                window.speechSynthesis.speak(mainMsg);
+                
+                mainMsg.onend = () => {
+                    statusText.innerText = "Magic Finished! ✨";
+                };
+            };
+        }
+    </script>
 </body>
 </html>
