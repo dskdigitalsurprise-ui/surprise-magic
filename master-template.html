@@ -13,38 +13,41 @@
             align-items: center; justify-content: center;
             min-height: 100vh; text-align: center; overflow-x: hidden;
         }
-        .container { padding: 20px; width: 90%; max-width: 400px; }
-        .gift-box {
-            font-size: 80px; margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-        h1 { font-size: 1.5rem; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .container { padding: 20px; width: 90%; max-width: 450px; }
+        .gift-box { font-size: 70px; margin-bottom: 15px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
+        
+        h1 { font-size: 1.4rem; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        
         #message-box {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px; border-radius: 15px;
-            border: 1px solid #f1c40f; margin-top: 20px;
+            border: 1px solid #f1c40f; margin-top: 15px;
             display: none; animation: fadeIn 1s;
+            font-size: 1.1rem; line-height: 1.5;
         }
         @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-        .branding { margin-top: 50px; font-size: 0.8rem; color: #bdc3c7; }
-        .order-btn {
-            display: inline-block; margin-top: 25px;
-            padding: 15px 25px; background: #e74c3c;
+
+        /* Marketing Box Style */
+        .info-box {
+            margin-top: 25px; padding: 15px;
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px dashed #e74c3c; border-radius: 10px;
+            font-size: 14px; line-height: 1.5; color: #ecf0f1;
+        }
+
+        /* Alag se WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-block; margin-top: 20px;
+            padding: 15px 25px; background: #25D366;
             color: white; text-decoration: none;
-            border-radius: 50px; font-weight: bold;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            border-radius: 50px; font-weight: bold; font-size: 16px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
             animation: pulse 1.5s infinite;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        .branding { margin-top: 40px; font-size: 0.8rem; color: #bdc3c7; }
     </style>
 </head>
 <body>
@@ -57,20 +60,27 @@
             <p id="display-text"></p>
         </div>
 
-        <a href="index.html" class="order-btn">Doston, Kya aap bhi aisa Jadu wala QR banwana chahte hain? <br> [CLICK HERE TO ORDER NOW]</a>
+        <div class="info-box">
+            Dosto kya aap bhi aisi magic surprise QR T-shirt banwana chahte hain jisme aapki pasnd ka Aura, Style, funny, Attitude, Birthday Wish, Anniversary Wish, Couple's ke liye Special ya Personal msg ya aapka koi bhi manpasnd dailogue ho. Aur option ke liye Whatspp par Contect karien..
+        </div>
+
+        <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-btn">
+            CLICK HERE TO WHATSAPP & ORDER NOW
+        </a>
 
         <div class="branding">
-            <p>DSK DIGITAL SURPRISE</p>
+            <p><strong>DSK DIGITAL SURPRISE</strong></p>
             <p>POWERED BY DANISH KHAN</p>
             <p style="font-size: 10px;">TM NO: 13512170 (CLASS: 42)</p>
         </div>
     </div>
 
     <script>
-        // --- YE 2 LINE HAR CUSTOMER KE LIYE BADALNI HAIN ---
+        // --- CUSTOMER DETAILS ---
         const CUSTOMER_NAME = "Rahul"; 
-        const CUSTOMER_DIALOGUE = "Happy Birthday Rahul! Aap hamesha khush raho aur aise hi muskurate raho.";
-        // ---------------------------------------------------
+        const OCCASION = "normal"; // "birthday", "anniversary", "normal"
+        const CUSTOMER_DIALOGUE = "Hi! Agar aapne ye scan kiya hai, toh aap mere fan ban chuke hain!";
+        // ------------------------
 
         const statusText = document.getElementById('status');
         const messageBox = document.getElementById('message-box');
@@ -85,26 +95,23 @@
         function startMagic() {
             statusText.innerText = "Listening to Magic...";
             
-            // Step 1: Intro Voice
-            const introMsg = new SpeechSynthesisUtterance(`Hi, kaise hain aap? ${CUSTOMER_NAME} ne aapke liye ek magic surprise bheja hai. Suniye...`);
+            let introText = `Hi, kaise hain aap? ${CUSTOMER_NAME} ki taraf se ek magic surprise... suniye!`;
+            if(OCCASION === "birthday") introText = `Hi! Aaj ${CUSTOMER_NAME} ka birthday hai, unka special message suniye!`;
+            if(OCCASION === "anniversary") introText = `Hi! Aaj ${CUSTOMER_NAME} ki anniversary hai, unka ye pyara surprise suniye!`;
+
+            const introMsg = new SpeechSynthesisUtterance(introText);
             introMsg.lang = 'hi-IN';
             introMsg.rate = 0.9;
-
             window.speechSynthesis.speak(introMsg);
 
-            // Step 2: Main Dialogue (Starts after intro)
             introMsg.onend = () => {
                 messageBox.style.display = "block";
                 displayText.innerText = CUSTOMER_DIALOGUE;
-                
                 const mainMsg = new SpeechSynthesisUtterance(CUSTOMER_DIALOGUE);
                 mainMsg.lang = 'hi-IN';
                 mainMsg.rate = 0.9;
                 window.speechSynthesis.speak(mainMsg);
-                
-                mainMsg.onend = () => {
-                    statusText.innerText = "Magic Finished! ✨";
-                };
+                mainMsg.onend = () => { statusText.innerText = "Magic Finished! ✨"; };
             };
         }
     </script>
