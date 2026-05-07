@@ -15,15 +15,12 @@
         h1 { color: #f1c40f; font-size: 22px; margin-bottom: 10px; }
     </style>
 </head>
-<body>
-
-    <div id="gift" class="gift-box" onclick="startMagic()">🎁</div>
+<body onclick="forcePlay()"> <div id="gift" class="gift-box" onclick="startMagic()">🎁</div>
     <h1 id="status">Tap to Reveal Surprise</h1>
     
     <img id="cust-photo" src="demo-photo.png" alt="Surprise">
-    
     <audio id="myaudio" loop preload="auto">
-        <source src="full-song.mp3" type="audio/mpeg">
+        <source src="ganasong.mp3" type="audio/mpeg">
     </audio>
 
     <div id="message-box">
@@ -37,28 +34,20 @@
 
     <div style="margin-top: 30px; font-size: 11px; color: #bdc3c7;">
         <p><strong>DSK DIGITAL SURPRISE</strong></p>
-        <p>POWERED BY DANISH KHAN</p>
-        <p>TM NO: 13512170 (CLASS: 42)</p>
+        <p>POWERED BY DANISH KHAN | TM NO: 13512170</p>
     </div>
 
     <script>
-        function startMagic() {
-            var audio = document.getElementById('myaudio');
-            
-            // Sabse pehle volume aur play command
-            audio.muted = false; 
-            audio.volume = 1.0;
-            
-            var playPromise = audio.play();
+        var audio = document.getElementById('myaudio');
 
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    console.log("Music Started!");
-                }).catch(error => {
-                    console.log("Play failed, retrying...");
-                    audio.play();
-                });
-            }
+        // Ye function tab chalega jab user screen par kahin bhi touch karega
+        function forcePlay() {
+            audio.play().catch(function(e) { console.log("Waiting for more interaction..."); });
+        }
+
+        function startMagic() {
+            audio.muted = false;
+            audio.play();
 
             document.getElementById('gift').style.display = "none";
             document.getElementById('cust-photo').style.display = "block";
