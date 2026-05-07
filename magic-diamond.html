@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSK Magic</title>
+    <style>
+        body { margin: 0; background: #0a0a23; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+        .gift { font-size: 80px; cursor: pointer; }
+        img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid #f1c40f; display: none; margin: 20px auto; object-fit: cover; }
+        .btn { display: none; margin-top: 20px; padding: 15px 30px; background: #25D366; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; }
+    </style>
+</head>
+<body onclick="start()">
+    <div id="g" class="gift">🎁</div>
+    <h1 id="t">TAP TO OPEN</h1>
+    <img id="i" src="demo-photo.png">
+    <audio id="a" src="full-song.mp3" loop></audio>
+    <a id="w" href="https://wa.me/916263619677" class="btn">ORDER NOW</a>
+    <script>
+        function start() {
+            document.getElementById('g').style.display='none';
+            document.getElementById('i').style.display='block';
+            document.getElementById('w').style.display='inline-block';
+            document.getElementById('t').innerText='Surprise for You!';
+            document.getElementById('a').play();
+        }
+    </script>
+</body>
+</html>
