@@ -15,12 +15,15 @@
         h1 { color: #f1c40f; font-size: 22px; margin-bottom: 10px; }
     </style>
 </head>
-<body onclick="forcePlay()"> <div id="gift" class="gift-box" onclick="startMagic()">🎁</div>
+<body>
+
+    <div id="gift" class="gift-box" onclick="startMagic()">🎁</div>
     <h1 id="status">Tap to Reveal Surprise</h1>
     
     <img id="cust-photo" src="demo-photo.png" alt="Surprise">
+    
     <audio id="myaudio" loop preload="auto">
-        <source src="ganasong.mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/dskdigitalsurprise-ui/surprise-magic/main/ganasong.mp3" type="audio/mpeg">
     </audio>
 
     <div id="message-box">
@@ -38,16 +41,14 @@
     </div>
 
     <script>
-        var audio = document.getElementById('myaudio');
-
-        // Ye function tab chalega jab user screen par kahin bhi touch karega
-        function forcePlay() {
-            audio.play().catch(function(e) { console.log("Waiting for more interaction..."); });
-        }
-
         function startMagic() {
-            audio.muted = false;
-            audio.play();
+            var audio = document.getElementById('myaudio');
+            audio.play().then(() => {
+                console.log("Playing!");
+            }).catch(err => {
+                audio.muted = false;
+                audio.play();
+            });
 
             document.getElementById('gift').style.display = "none";
             document.getElementById('cust-photo').style.display = "block";
