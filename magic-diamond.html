@@ -15,7 +15,7 @@
         h1 { color: #f1c40f; font-size: 22px; margin-bottom: 10px; }
     </style>
 </head>
-<body>
+<body onclick="prePlay()">
 
     <div id="gift" class="gift-box" onclick="startMagic()">🎁</div>
     <h1 id="status">Tap to Reveal Surprise</h1>
@@ -23,33 +23,24 @@
     <img id="cust-photo" src="demo-photo.png" alt="Surprise">
     
     <audio id="myaudio" loop preload="auto">
-        <source src="https://raw.githubusercontent.com/dskdigitalsurprise-ui/surprise-magic/main/ganasong.mp3" type="audio/mpeg">
+        <source src="song.mp3" type="audio/mpeg">
     </audio>
 
     <div id="message-box">
         <div class="info-text">
-            दोस्तो क्या आप भी ऐसा मैजिक सरप्राइज QR टी-शर्ट बनवाना चाहते हैं जिसमें आपकी पसंद का Aura ऑरा, Style स्टाइल, Focus फोकस Funny फनी, Attitude एटीट्यूड, Birthday Wish, Anniversary Wish Couple's कपल्स के लिए Special या पर्सनल मैसेज या आपका कोई भी मनपसंद डायलॉग हो.. और भी ऑप्शन देखने के लिए नीचे व्हाट्सएप पर क्लिक करें
+            दोस्तो क्या आप भी ऐसा मैजिक सरपरप्राइज QR टी-शर्ट बनवाना चाहते हैं जिसमें आपकी पसंद का Aura ऑरा, Style स्टाइल, Focus फोकस Funny फनी, Attitude एटीट्यूड, Birthday Wish, Anniversary Wish Couple's कपल्स के लिए Special या पर्सनल मैसेज या आपका कोई भी मनपसंद डायलॉग हो.. और भी ऑप्शन देखने के लिए नीचे व्हाट्सएप पर क्लिक करें
         </div>
         <a href="https://wa.me/916263619677?text=Hello%20Danish%20Aapka%20QR%20Scan%20Kiya%20Mujhe%20Bhi%20Surprise%20Banwana%20Hai%20Details%20Plan%20Bataiye.." class="whatsapp-btn">
             CLICK HERE TO WHATSAPP & ORDER NOW
         </a>
     </div>
 
-    <div style="margin-top: 30px; font-size: 11px; color: #bdc3c7;">
-        <p><strong>DSK DIGITAL SURPRISE</strong></p>
-        <p>POWERED BY DANISH KHAN | TM NO: 13512170</p>
-    </div>
-
     <script>
-        function startMagic() {
-            var audio = document.getElementById('myaudio');
-            audio.play().then(() => {
-                console.log("Playing!");
-            }).catch(err => {
-                audio.muted = false;
-                audio.play();
-            });
+        var audio = document.getElementById('myaudio');
+        function prePlay() { audio.play().then(() => { audio.pause(); }).catch(e => {}); }
 
+        function startMagic() {
+            audio.play();
             document.getElementById('gift').style.display = "none";
             document.getElementById('cust-photo').style.display = "block";
             document.getElementById('message-box').style.display = "block";
