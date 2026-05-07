@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Surprise - DSK Magic (MP3)</title>
+    
+    <script>
+        /* =============================================
+           SIRF YE 2 CHEEZEIN BADLEIN (SABSE UPAR)
+           ============================================= */
+        const CUSTOMER_NAME = "Rahul"; 
+        const AUDIO_FILE_URL = "rahul_voice.mp3"; // Yahan Male/Female koi bhi MP3 ka naam daalein
+        /* ============================================= */
+
+        const audio = new Audio(AUDIO_FILE_URL);
+
+        function startMagic() {
+            const statusText = document.getElementById('status');
+            const messageBox = document.getElementById('message-box');
+            
+            statusText.innerText = "Magic Playing...";
+            
+            audio.play().catch(error => {
+                console.log("Play failed:", error);
+                alert("Kripya screen par dobara click karein!");
+            });
+
+            audio.onended = () => {
+                messageBox.style.display = "block";
+                statusText.innerText = "Magic Finished! ✨";
+            };
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0; padding: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white; font-family: 'Arial', sans-serif;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 100vh; text-align: center; overflow-x: hidden;
+        }
+        .container { padding: 20px; width: 90%; max-width: 450px; }
+        .gift-box { font-size: 70px; margin-bottom: 15px; animation: bounce 2s infinite; cursor: pointer; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
+        h1 { font-size: 1.4rem; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        #message-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px; border-radius: 15px;
+            border: 1px solid #f1c40f; margin-top: 15px;
+            display: none; animation: fadeIn 1s;
+        }
+        @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+        .info-box {
+            margin-top: 25px; padding: 18px;
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px dashed #e74c3c; border-radius: 12px;
+            font-size: 14px; line-height: 1.6; color: #ecf0f1;
+            text-align: left;
+        }
+        .whatsapp-btn {
+            display: inline-block; margin-top: 20px;
+            padding: 15px 25px; background: #25D366;
+            color: white; text-decoration: none;
+            border-radius: 50px; font-weight: bold; font-size: 16px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        .branding { margin-top: 40px; font-size: 0.8rem; color: #bdc3c7; }
+    </style>
+</head>
+<body onclick="startMagic()">
+
+    <div class="container">
+        <div class="gift-box">🎁</div>
+        <h1 id="status">Tap to Reveal Surprise</h1>
+        
+        <div id="message-box">
+            <p>Magic Voice is playing... Listen carefully! 🎵</p>
+        </div>
+
+        <div class="info-box">
+            दोस्तो क्या आप भी ऐसा मैजिक सरप्राइज QR टी-शर्ट बनवाना चाहते हैं जिसमें आपकी पसंद का Aura ऑरा, Style स्टाइल, Focus फोकस, Funny फनी, Attitude एटीट्यूड, Birthday Wish, Anniversary Wish Couple's कपल्स के लिए Special या पर्सनल मैसेज या आपका कोई भी मनपसंद डायलॉग हो.. और भी ऑप्शन देखने के लिए नीचे व्हाट्सएप पर क्लिक करें
+        </div>
+
+        <a href="https://wa.me/918770047992?text=Hello%20Danish%20Aapka%20QR%20Scan%20Kiya%20Mujhe%20Bhi%20Surprise%20Banwana%20Hai%20Details%20Plan%20Bataiye.." class="whatsapp-btn">
+            CLICK HERE TO WHATSAPP & ORDER NOW
+        </a>
+
+        <div class="branding">
+            <p><strong>DSK DIGITAL SURPRISE</strong></p>
+            <p>POWERED BY DANISH KHAN</p>
+            <p style="font-size: 10px;">TM NO: 13512170 (CLASS: 42)</p>
+        </div>
+    </div>
+
+</body>
+</html>
