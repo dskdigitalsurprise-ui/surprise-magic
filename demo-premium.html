@@ -1,1 +1,75 @@
 
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <script>
+        /* =============================================
+           SIRF YE 3 CHEEZEIN BADLEIN (SABSE UPAR)
+           ============================================= */
+        const CUSTOMER_NAME = "Rahul"; 
+        const CUSTOMER_PHOTO = "demo-photo.png";    // GitHub par upload ki photo ka naam
+        const AUDIO_FILE_URL = "full-song.mp3"; // GitHub par upload ki audio ka naam
+        /* ============================================= */
+
+        function startMagic() {
+            const audio = new Audio(AUDIO_FILE_URL);
+            document.getElementById('gift').style.display = "none";
+            document.getElementById('cust-photo').src = CUSTOMER_PHOTO;
+            document.getElementById('cust-photo').style.display = "block";
+            document.getElementById('message-box').style.display = "block";
+            document.getElementById('status').innerText = "Special Surprise for " + CUSTOMER_NAME;
+            audio.play().catch(e => console.log("Click again to play"));
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSK Digital Magic - Photo Surprise</title>
+    <style>
+        body {
+            margin: 0; background: radial-gradient(circle, #1a1a2e, #16213e);
+            color: white; font-family: 'Arial', sans-serif;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            min-height: 100vh; text-align: center; overflow: hidden;
+        }
+        #cust-photo {
+            width: 250px; height: 250px; border-radius: 50%;
+            border: 6px solid #f1c40f; margin: 20px auto;
+            display: none; object-fit: cover;
+            box-shadow: 0 0 30px rgba(241, 196, 15, 0.5);
+            animation: zoomIn 0.8s ease-out;
+        }
+        @keyframes zoomIn { from {transform: scale(0);} to {transform: scale(1);} }
+        .gift-box { font-size: 100px; cursor: pointer; animation: shake 0.6s infinite; }
+        @keyframes shake { 0% {transform: rotate(0);} 25% {transform: rotate(8deg);} 75% {transform: rotate(-8deg);} 100% {transform: rotate(0);} }
+        #message-box { display: none; margin-top: 10px; padding: 0 20px; }
+        .whatsapp-btn {
+            display: inline-block; margin-top: 30px; padding: 15px 30px;
+            background: #25D366; color: white; text-decoration: none;
+            border-radius: 50px; font-weight: bold; font-size: 18px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        h1 { color: #f1c40f; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body onclick="startMagic()">
+
+    <div id="gift" class="gift-box">🎁</div>
+    <h1 id="status">Tap to Open Surprise</h1>
+    
+    <img id="cust-photo" src="" alt="Customer Surprise">
+
+    <div id="message-box">
+        <p style="font-size: 18px;">Listen Carefully! 🎵</p>
+        <a href="https://wa.me/916263619677?text=Hello%20Danish%20Bhai%2C%20mujhe%20bhi%20aisa%20Digital%20QR%20banwana%20hai" class="whatsapp-btn">
+            ORDER YOUR MAGIC QR NOW
+        </a>
+    </div>
+
+    <div style="margin-top: 50px; font-size: 12px; color: #bdc3c7;">
+        <p><strong>DSK DIGITAL SURPRISE</strong></p>
+        <p>TM NO: 13512170</p>
+    </div>
+
+</body>
+</html>
