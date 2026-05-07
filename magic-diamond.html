@@ -1,29 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSK Magic</title>
+    <title>DSK Digital Magic</title>
     <style>
-        body { margin: 0; background: #0a0a23; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
-        .gift { font-size: 80px; cursor: pointer; }
-        img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid #f1c40f; display: none; margin: 20px auto; object-fit: cover; }
-        .btn { display: none; margin-top: 20px; padding: 15px 30px; background: #25D366; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; }
+        body { margin: 0; background: radial-gradient(circle, #1a1a2e, #16213e); color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; overflow-x: hidden; }
+        
+        /* Photo Style: Full dikhegi, kategi nahi */
+        #cust-photo { 
+            width: 85%; 
+            max-width: 320px; 
+            border-radius: 12px; 
+            border: 4px solid #f1c40f; 
+            margin: 15px auto; 
+            display: none; 
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.4);
+            object-fit: contain; 
+        }
+
+        .gift-box { font-size: 100px; cursor: pointer; animation: shake 0.6s infinite; }
+        @keyframes shake { 0% {transform: rotate(0);} 25% {transform: rotate(8deg);} 75% {transform: rotate(-8deg);} 100% {transform: rotate(0);} }
+        
+        #message-box { display: none; padding: 0 15px; }
+        
+        /* New Text Box Style */
+        .info-text {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px dashed #f1c40f;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 15px auto;
+            max-width: 320px;
+        }
+
+        .whatsapp-btn { 
+            display: inline-block; 
+            padding: 15px 25px; 
+            background: #25D366; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 16px; 
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); 
+        }
+
+        h1 { color: #f1c40f; font-size: 22px; margin-bottom: 10px; }
     </style>
 </head>
-<body onclick="start()">
-    <div id="g" class="gift">🎁</div>
-    <h1 id="t">TAP TO OPEN</h1>
-    <img id="i" src="demo-photo.png">
-    <audio id="a" src="full-song.mp3" loop></audio>
-    <a id="w" href="https://wa.me/916263619677" class="btn">ORDER NOW</a>
+<body>
+
+    <div id="gift" class="gift-box" onclick="startMagic()">🎁</div>
+    <h1 id="status">Tap to Reveal Surprise</h1>
+    
+    <img id="cust-photo" src="demo-photo.png" alt="Surprise">
+    <audio id="myaudio" src="full-song.mp3" preload="auto" loop></audio>
+
+    <div id="message-box">
+        <div class="info-text">
+            दोस्तो क्या आप भी ऐसा मैजिक सरप्राइज QR टी-शर्ट बनवाना चाहते हैं जिसमें आपकी पसंद का Aura ऑरा, Style स्टाइल, Focus फोकस Funny फनी, Attitude एटीट्यूड, Birthday Wish, Anniversary Wish Couple's कपल्स के लिए Special या पर्सनल मैसेज या आपका कोई भी मनपसंद डायलॉग हो.. और भी ऑप्शन देखने के लिए नीचे व्हाट्सएप पर क्लिक करें
+        </div>
+
+        <a href="https://wa.me/916263619677?text=Hello%20Danish%20Aapka%20QR%20Scan%20Kiya%20Mujhe%20Bhi%20Surprise%20Banwana%20Hai%20Details%20Plan%20Bataiye.." class="whatsapp-btn">
+            CLICK HERE TO WHATSAPP & ORDER NOW
+        </a>
+    </div>
+
+    <div style="margin-top: 30px; font-size: 11px; color: #bdc3c7;">
+        <p><strong>DSK DIGITAL SURPRISE</strong></p>
+        <p>POWERED BY DANISH KHAN</p>
+        <p>TM NO: 13512170 (CLASS: 42)</p>
+    </div>
+
     <script>
-        function start() {
-            document.getElementById('g').style.display='none';
-            document.getElementById('i').style.display='block';
-            document.getElementById('w').style.display='inline-block';
-            document.getElementById('t').innerText='Surprise for You!';
-            document.getElementById('a').play();
+        function startMagic() {
+            const audio = document.getElementById('myaudio');
+            const gift = document.getElementById('gift');
+            const photo = document.getElementById('cust-photo');
+            const msgBox = document.getElementById('message-box');
+            const status = document.getElementById('status');
+
+            // Sound play karne ka sabse pakka tarika
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(_ => {
+                    console.log("Playing...");
+                }).catch(error => {
+                    console.log("Auto-play was prevented");
+                });
+            }
+
+            gift.style.display = "none";
+            photo.style.display = "block";
+            msgBox.style.display = "block";
+            status.innerText = "Surprise for You!";
         }
     </script>
 </body>
