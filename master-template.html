@@ -5,53 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSK Digital Surprise</title>
     <style>
-        body { margin: 0; background: #141e30; background: linear-gradient(to bottom, #243b55, #141e30); color: white; font-family: 'Segoe UI', Arial, sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
+        body { margin: 0; background: #141e30; background: linear-gradient(to bottom, #243b55, #141e30); color: white; font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
         
-        .gift-box { width: 120px; margin-top: 20px; cursor: pointer; animation: shake 0.8s infinite; }
+        .gift-box { width: 150px; margin-top: 50px; cursor: pointer; animation: shake 0.8s infinite; }
         @keyframes shake { 0%, 100% {transform: rotate(0);} 25% {transform: rotate(8deg);} 75% {transform: rotate(-8deg);} }
         
         h2 { color: #f1c40f; font-size: 24px; margin: 20px 0; }
 
-        /* Red Technical Note - Professional Style */
-        .tech-note-red { background: rgba(231, 76, 60, 0.15); border: 2px solid #e74c3c; color: #ff7675; padding: 15px; border-radius: 12px; font-size: 14px; margin-bottom: 20px; text-align: left; line-height: 1.6; max-width: 400px; }
+        /* Hidden Content initially */
+        #main-content { display: none; width: 100%; max-width: 450px; flex-direction: column; align-items: center; }
 
-        .info-container { background: rgba(255, 255, 255, 0.07); border: 1px dashed #f1c40f; padding: 20px; border-radius: 15px; max-width: 400px; margin-bottom: 25px; text-align: left; }
-        .info-text { font-size: 15px; line-height: 1.6; color: #ecf0f1; }
+        /* Rahul's Voice Message Box */
+        .voice-msg-display { border: 2px solid #f1c40f; padding: 25px; border-radius: 15px; background: rgba(255, 255, 255, 0.1); margin-bottom: 20px; font-size: 18px; line-height: 1.6; color: #fff; box-shadow: 0 0 20px rgba(241, 196, 15, 0.3); font-weight: bold; }
 
-        .whatsapp-btn { display: block; width: 100%; max-width: 350px; padding: 18px; background: #2ecc71; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); margin-bottom: 30px; }
+        .tech-note-red { background: rgba(231, 76, 60, 0.15); border: 2px solid #e74c3c; color: #ff7675; padding: 15px; border-radius: 12px; font-size: 14px; margin-bottom: 20px; text-align: left; line-height: 1.6; }
+
+        .info-text { background: rgba(255, 255, 255, 0.07); border: 1px dashed #f1c40f; padding: 20px; border-radius: 15px; font-size: 14px; text-align: left; line-height: 1.6; margin-bottom: 25px; }
+
+        .whatsapp-btn { display: block; width: 100%; padding: 18px; background: #2ecc71; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; margin-bottom: 30px; }
         
-        .branding-section { margin-top: auto; padding: 20px 0; font-size: 13px; color: #bdc3c7; line-height: 1.8; }
-        .branding-section b { color: #fff; }
+        .branding-section { margin-top: 20px; padding: 20px 0; font-size: 12px; color: #bdc3c7; line-height: 1.8; }
     </style>
 </head>
-<body onclick="startMagic()">
+<body>
 
-    <img src="https://raw.githubusercontent.com/dskdigitalsurprise-ui/surprise-magic/main/gift-icon.png" class="gift-box" id="gift" onclick="startMagic()">
-    
-    <h2 id="status">Tap to Reveal Surprise</h2>
+    <div id="gift-screen">
+        <img src="https://raw.githubusercontent.com/dskdigitalsurprise-ui/surprise-magic/main/gift-icon.png" class="gift-box" onclick="revealMagic()">
+        <h2 id="status">Tap to Reveal Surprise</h2>
+    </div>
 
-    <div class="info-container">
+    <div id="main-content">
+        <h2 style="color: #f1c40f;">Listening to Magic...</h2>
+
+        <div class="voice-msg-display">
+            "Hi kaise hain aap rahul ki tarf se ek magic surprise suniye dosto agar aap ye scan kar rahe hain to aap mere bahut khaas hain Stay Awesome"
+        </div>
+
         <div class="tech-note-red">
             <b>नोट:</b> हम केवल 'Interactive QR-Interface' और 'Cloud-Hosted Link' की सर्विस प्रदान करते हैं। आपके QR और Link को हम आपकी 'Personal Identity' के साथ कोड करते है। 
             <br><br>
-            यह QR मैजिक सरप्राइज़, आप T-shirt के अलावा किसी भी चीज़ पर (Print प्रिंट) करा सकते हैं, आप अपने Partner, friends, family के किसी bhi Member को सरप्राइज़ दे सकते हैं।
-            <br><br>
-            Birthday, Anniversary, Couple के लिए खास तोहफा.. 
+            यह QR मैजिक सरप्राइज़, आप T-shirt के अलावा किसी भी चीज़ पर (Print प्रिंट) करा सकते हैं।
             <br><br>
             <b>T-shirt और Physical Printing का कार्य ग्राहक का होगा।</b>
         </div>
 
         <div class="info-text">
-            दोस्तो क्या आप भी ऐसा मैजिक सरप्राइज QR टी-शर्ट बनवाना चाहते हैं जिसमें आपकी पसंद का Aura ऑरा, Style स्टाइल, Focus फोकस Funny फनी, Attitude एटीट्यूड, Birthday Wish, Anniversary Wish Couple's कपल्स के लिए Special या पर्सनल मैसेज या आपका कोई भी मनपसंद डायलॉग हो.. और भी ऑप्शन देखने के लिए नीचे व्हाट्सएप पर क्लिक करें।
+            दोस्तो क्या आप भी ऐसा मैजिक सरप्राइज QR टी-शर्ट बनवाना चाहते हैं जिसमें आपकी पसंद का Aura, Style, Birthday/Anniversary Wish Special मैसेज हो? नीचे क्लिक करें।
         </div>
-    </div>
 
-    <a href="https://wa.me/916263619677" class="whatsapp-btn">CLICK HERE TO WHATSAPP & ORDER NOW</a>
+        <a href="https://wa.me/916263619677" class="whatsapp-btn">ORDER NOW ON WHATSAPP</a>
 
-    <div class="branding-section">
-        <b>DSK DIGITAL SURPRISE</b><br>
-        POWERED BY DANISH KHAN<br>
-        TM NO: 13512170 (CLASS: 42)
+        <div class="branding-section">
+            <b>DSK DIGITAL SURPRISE</b><br>
+            POWERED BY DANISH KHAN<br>
+            TM NO: 13512170 (CLASS: 42)
+        </div>
     </div>
 
     <audio id="myaudio">
@@ -60,14 +68,14 @@
 
     <script>
         var audio = document.getElementById('myaudio');
-        var isPlaying = false;
 
-        function startMagic() {
-            if (!isPlaying) {
-                audio.play().catch(e => console.log("Interaction required"));
-                document.getElementById('status').innerText = "Listening to Magic...";
-                isPlaying = true;
-            }
+        function revealMagic() {
+            // Awaaz shuru (Rahul's Voice)
+            audio.play().catch(e => console.log("Interaction required"));
+            
+            // Layout badlein
+            document.getElementById('gift-screen').style.display = "none";
+            document.getElementById('main-content').style.display = "flex";
         }
     </script>
 
