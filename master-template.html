@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSK Digital Surprise</title>
+    
+    <script>
+        const AUDIO_FILE = "videoplayback.mp3"; 
+        const MAIN_MESSAGE = "Dosto agar aap ye scan kar rahe hain toh aap mere bahut khaas hain Stay Awesome";
+        const WHATSAPP_NUMBER = "916263619677";
+
+        // Iske niche ka code fix hai, use change karne ki zaroorat nahi hai
+        const RED_NOTE_FIXED = `
+            <b>नोट:</b> हम केवल 'Interactive QR-Interface' और 'Cloud-Hosted Link' की सर्विस प्रदान करते हैं। आपके QR और Link को हम आपकी 'Personal Identity' के साथ कोड करते है। 
+            <br><br>
+            यह QR मैजिक सरप्राइज़, आप T-shirt के अलावा किसी भी चीज़ पर (Print प्रिंट) करा सकते हैं।
+            <br><br>
+            <b>T-shirt और Physical Printing का कार्य ग्राहक का होगा।</b>
+        `;
+    </script>
+
     <style>
         body { margin: 0; background: #1a1a2e; background: radial-gradient(circle, #1a1a2e, #16213e); color: white; font-family: 'Segoe UI', Arial, sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; text-align: center; padding: 20px; box-sizing: border-box; }
-        
-        /* Gift Screen (First View) */
         #gift-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; }
         .gift-emoji { font-size: 130px; cursor: pointer; animation: shake 1s infinite; }
         @keyframes shake { 0%, 100% {transform: rotate(0);} 25% {transform: rotate(10deg);} 75% {transform: rotate(-10deg);} }
         .status-text { color: #f1c40f; font-size: 26px; margin: 30px 0; font-weight: bold; }
-
-        /* Main Content (Hidden Initially) */
         #main-content { display: none; width: 100%; max-width: 450px; flex-direction: column; align-items: center; }
-
-        /* A. Rahul's Screen Message (Only the part you requested) */
         .rahul-display-text { border: 3px solid #f1c40f; padding: 25px; border-radius: 15px; background: rgba(255, 255, 255, 0.08); margin-bottom: 20px; font-size: 19px; line-height: 1.6; color: #fff; font-weight: bold; box-shadow: 0 0 20px rgba(241, 196, 15, 0.3); text-align: center; }
-
-        /* B. Technical Red Note */
         .tech-note-red { background: rgba(231, 76, 60, 0.15); border: 2px solid #e74c3c; color: #ff7675; padding: 15px; border-radius: 12px; font-size: 14px; margin-bottom: 20px; text-align: left; line-height: 1.6; }
-
-        /* C. Services Message (Netlify wala pura purana message) */
         .services-text-box { background: rgba(255, 255, 255, 0.05); border: 1px dashed #f1c40f; padding: 20px; border-radius: 15px; font-size: 14px; text-align: left; line-height: 1.6; margin-bottom: 25px; color: #ecf0f1; }
-
         .whatsapp-btn { display: block; width: 100%; max-width: 380px; padding: 18px; background: #2ecc71; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); margin-bottom: 30px; }
-        
         .footer-branding { margin-top: auto; padding: 20px 0; font-size: 12px; color: #bdc3c7; line-height: 1.8; }
     </style>
 </head>
@@ -39,26 +43,14 @@
 
     <div id="main-content">
         <h2 style="color: #f1c40f;">Listening to Magic...</h2>
-
-        <div class="rahul-display-text">
-            Dosto agar aap ye scan kar rahe hain toh aap mere bahut khaas hain Stay Awesome
-        </div>
-
-        <div class="tech-note-red">
-            <b>नोट:</b> हम केवल 'Interactive QR-Interface' और 'Cloud-Hosted Link' की सर्विस प्रदान करते हैं। आपके QR और Link को हम आपकी 'Personal Identity' के साथ कोड करते है। 
-            <br><br>
-            यह QR मैजिक सरप्राइज़, आप T-shirt के अलावा किसी भी चीज़ पर (Print प्रिंट) करा सकते हैं, आप अपने Partner, friends, family के किसी भी Member को सरप्राइज़ दे सकते हैं।
-            <br><br>
-            Birthday, Anniversary, Couple के लिए खास तोहफा.. 
-            <br><br>
-            <b>T-shirt और Physical Printing का कार्य ग्राहक का होगा।</b>
-        </div>
-
+        <div id="msg-box" class="rahul-display-text"></div>
+        <div id="note-box" class="tech-note-red"></div>
+        
         <div class="services-text-box">
             दोस्तो क्या आप भी ऐसा मैजिक सरप्राइज QR टी-शर्ट बनवाना चाहते हैं जिसमें आपकी पसंद का Aura ऑरा, Style स्टाइल, Focus फोकस Funny फनी, Attitude एटीट्यूड, Birthday Wish, Anniversary Wish Couple's कपल्स के लिए Special या पर्सनल मैसेज या आपका कोई भी मनपसंद डायलॉग हो.. और भी ऑप्शन देखने के लिए नीचे व्हाट्सएप पर क्लिक करें।
         </div>
 
-        <a href="https://wa.me/916263619677" class="whatsapp-btn">ORDER NOW ON WHATSAPP</a>
+        <a id="wa-link" href="#" class="whatsapp-btn">ORDER NOW ON WHATSAPP</a>
 
         <div class="footer-branding">
             <b>DSK DIGITAL SURPRISE</b><br>
@@ -67,21 +59,24 @@
         </div>
     </div>
 
-    <audio id="ai-voice">
-        <source src="videoplayback.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="ai-voice"></audio>
 
     <script>
-        var audio = document.getElementById('ai-voice');
+        function setup() {
+            document.getElementById('msg-box').innerText = MAIN_MESSAGE;
+            document.getElementById('note-box').innerHTML = RED_NOTE_FIXED;
+            document.getElementById('wa-link').href = "https://wa.me/" + WHATSAPP_NUMBER;
+            document.getElementById('ai-voice').innerHTML = '<source src="' + AUDIO_FILE + '" type="audio/mpeg">';
+        }
 
         function revealMagic() {
-            // Audio play hoga (Pura: Hi Rahul... Stay Awesome)
-            audio.play().catch(e => console.log("Interaction needed"));
-            
-            // Layout badlega (Pehle gift gayab hoga fir content aayega)
+            var audio = document.getElementById('ai-voice');
+            audio.load();
+            audio.play().catch(e => console.log("Play Error"));
             document.getElementById('gift-screen').style.display = "none";
             document.getElementById('main-content').style.display = "flex";
         }
+        setup();
     </script>
 </body>
 </html>
