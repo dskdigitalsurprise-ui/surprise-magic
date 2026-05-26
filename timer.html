@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSK SURPRISE TIMER</title>
+    <style>
+        /* CSS Styling */
+        body { background: #fdfcf0; font-family: 'Arial', sans-serif; display: flex; flex-direction: column; align-items: center; margin: 0; padding: 20px; color: #333; }
+        .container { width: 100%; max-width: 450px; text-align: center; }
+        
+        /* 1. Colorful Timer Styling */
+        #main-timer { font-size: 24px; font-weight: bold; padding: 20px; border-radius: 15px; margin: 15px 0; background: linear-gradient(135deg, #74b9ff, #a29bfe); color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 2px solid white; display: block; }
+
+        /* Button Styling */
+        .btn { width: 100%; padding: 18px; margin: 12px 0; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s; position: relative; text-decoration: none; }
+        .btn:active { transform: scale(0.96); }
+        .lock-tag { position: absolute; right: 15px; background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 20px; font-size: 14px; }
+
+        /* Colors (Reference 54627.jpg) */
+        .btn-birthday { background: #ff4757; }
+        .btn-couple { background: #a29bfe; }
+        .btn-anniversary { background: #54a0ff; }
+        .btn-date { background: #00d2d3; }
+        .btn-wish { background: #ff9ff3; }
+        .btn-music { background: #ff9f43; }
+        .btn-promise { background: #1dd1a1; }
+        .btn-gift { background: linear-gradient(45deg, #ff6b6b, #f093fb); }
+        
+        /* WhatsApp Order Button */
+        .btn-wa { background: #25D366; margin-top: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); }
+
+        .sabr-box { margin-top: 25px; padding: 15px; border: 2px dashed #ff4757; border-radius: 15px; color: #ff4757; font-weight: bold; font-style: italic; background: #fff5f5; }
+    </style>
+</head>
+<body>
+
+<script>
+    /* ============================================================
+       🚀 DSK ADMIN SECTION (Sirf Yahan Badle - Ek Line Se)
+    ============================================================ */
+    const UNLOCK_DATE  = "June 10, 2026 00:00:00"; // Surprise ka waqt
+    const CUSTOMER_NAME = "Priya & Rahul";         // Couple ka naam
+    const MUSIC_URL     = "https://youtube.com/..."; // Music Link
+    const GIFT_URL      = "https://gift-link.com";   // Asli Gift Link
+    const WISH_MESSAGE  = "Janamdin ki dheron shubhkaamnayein! ✨❤️";
+    const PROMISE_MSG   = "Hamesha tumhara saath nibhaunga! 🤝";
+    
+    // Switch: Kise dikhana hai (true) aur kise chhupana hai (false)
+    const SHOW_BIRTHDAY    = true; 
+    const SHOW_COUPLE      = true;
+    const SHOW_ANNIVERSARY = true; 
+    /* ============================================================ */
+</script>
+
+<div class="container">
+    <h1 style="color:#d63031; font-size: 22px;">✨ DSK DIGITAL SURPRISE ✨</h1>
+    
+    <!-- Colorful Timer Section -->
+    <div id="main-timer">Loading Timer... ⏳</div>
+
+    <!-- Buttons Section -->
+    <div id="area-btns">
+        <div id="b1" class="btn btn-birthday" onclick="check('bday')">🎂 Happy Birthday <span class="lock-tag" id="l1">🔒</span></div>
+        <div id="b2" class="btn btn-couple" onclick="check('cp')">👩‍❤️‍👨 Sweet Couple <span class="lock-tag" id="l2">🔒</span></div>
+        <div id="b3" class="btn btn-anniversary" onclick="check('anniv')">💍 Happy Anniversary <span class="lock-tag" id="l3">🔒</span></div>
+        <div class="btn btn-date" onclick="check('dt')">📅 Surprise Date & Time ⏰ <span class="lock-tag" id="l4">🔒</span></div>
+        <div class="btn btn-wish" onclick="check('ws')">🙏 Wishes & Blessings ✨ <span class="lock-tag" id="l5">🔒</span></div>
+        <div class="btn btn-music" onclick="check('ms')">🎵 Favorite Music/Song 🎧 <span class="lock-tag" id="l6">🔒</span></div>
+        <div class="btn btn-promise" onclick="check('pm')">🤝 Future Promise ❤️ <span class="lock-tag" id="l7">🔒</span></div>
+        <div class="btn btn-gift" onclick="check('gf')">🎁 Aapka Special Gift 🎊 <span class="lock-tag" id="l8">🔒</span></div>
+    </div>
+
+    <!-- Sabr Line -->
+    <div class="sabr-box">
+        Sabr nahi ho raha kya? 😉 <br> Thoda intzar kro.. waqt aane par hi khulega! ⏳✨
+    </div>
+
+    <!-- WhatsApp Order Button -->
+    <a href="https://wa.me/916263619677?text=Hello%20Danish%20Bhai%20Mujhe%20Bhi%20Timer%20Surprise%20Banwana%20Hai" class="btn btn-wa">
+        📲 Order Now: 6263619677
+    </a>
+</div>
+
+<script>
+    // Visibility Controls
+    if(!SHOW_BIRTHDAY) document.getElementById('b1').style.display = 'none';
+    if(!SHOW_COUPLE) document.getElementById('b2').style.display = 'none';
+    if(!SHOW_ANNIVERSARY) document.getElementById('b3').style.display = 'none';
+
+    let unlocked = false;
+    const target = new Date(UNLOCK_DATE).getTime();
+
+    setInterval(function() {
+        const now = new Date().getTime();
+        const diff = target - now;
+        if (diff > 0) {
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById("main-timer").innerHTML = "Surprise Unlocks in: " + h + "h " + m + "m " + s + "s ⏳";
+        } else {
+            unlocked = true;
+            document.getElementById("main-timer").innerHTML = "🎉 Surprise is LIVE! 🎉";
+            document.getElementById("main-timer").style.background = "linear-gradient(135deg, #1dd1a1, #00d2d3)";
+            for(let i=1; i<=8; i++) { if(document.getElementById("l"+i)) document.getElementById("l"+i).innerHTML = "✅"; }
+        }
+    }, 1000);
+
+    function check(t) {
+        if(!unlocked) { alert("Ubb (Ab) thoda sabr karein! 😉\nSurprise " + UNLOCK_DATE + " ko khulega."); return; }
+        if(t==='ws') alert(WISH_MESSAGE);
+        else if(t==='pm') alert(PROMISE_MSG);
+        else if(t==='ms') window.open(MUSIC_URL, '_blank');
+        else if(t==='gf') window.location.href = GIFT_URL;
+        else if(t==='dt') alert("Target: " + UNLOCK_DATE);
+        else alert("Special Day for " + CUSTOMER_NAME);
+    }
+</script>
+</body>
+</html>
